@@ -1,5 +1,5 @@
-from Clients.domain.ClientRepository import ClientRepository
-from Clients.domain.Client import Client
+from ...domain.ClientRepository import ClientRepository
+from ...domain.Client import Client
 
 
 class ClientGetAll:

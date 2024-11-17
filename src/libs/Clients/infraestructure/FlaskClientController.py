@@ -1,7 +1,6 @@
 from flask import Request, Response, jsonify
-
-from Clients.domain.ClientNotFoundError import ClientNotFoundError
-from Shared.infrastructure import ServiceContainer
+from ..domain.ClientNotFoundError import ClientNotFoundError
+from ...Shared.infrastructure.ServiceContainer import ServiceContainer
 
 class FlaskClientController:
 
@@ -9,7 +8,10 @@ class FlaskClientController:
         pass
 
     def get_all(self, request: Request) -> Response:
+        # users = ServiceContainer["client"]["get_all"].run()
         users = ServiceContainer["client"]["get_all"].run()
+        print(users)
+        # users = ServiceContainer.client.get_all.run()
         
         return jsonify(users)
 
@@ -25,7 +27,6 @@ class FlaskClientController:
                 return jsonify({"message": e.message}), 404    
             else:
                 raise e
-
 
     def create(self, request: Request) -> Response:
         body = request.get_json()

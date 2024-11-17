@@ -1,14 +1,14 @@
 import datetime
-from Clients.domain.ClientRepository import ClientRepository
-from Clients.domain.Client import Client
-from Clients.domain.ClientId import ClientId
-from Clients.domain.ClientType import ClientType
-from Clients.domain.ClientName import ClientName
-from Clients.domain.ClientEmail import ClientEmail
-from Clients.domain.ClientAddress import ClientAddress
-from Clients.domain.ClientPhone import ClientPhone
-from Clients.domain.ClientIsActive import ClientIsActive
-from Clients.domain.ClientCreatedAt import ClientCreatedAt
+from ...domain.ClientRepository import ClientRepository
+from ...domain.Client import Client
+from ...domain.ClientId import ClientId
+from ...domain.ClientType import ClientType
+from ...domain.ClientName import ClientName
+from ...domain.ClientEmail import ClientEmail
+from ...domain.ClientAddress import ClientAddress
+from ...domain.ClientPhone import ClientPhone
+from ...domain.ClientIsActive import ClientIsActive
+from ...domain.ClientCreatedAt import ClientCreatedAt
 
 class ClientCreate:
     def __init__(self, repository: ClientRepository):

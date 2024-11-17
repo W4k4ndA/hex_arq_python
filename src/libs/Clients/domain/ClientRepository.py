@@ -1,6 +1,6 @@
 from typing import Protocol, runtime_checkable
-from Client import Client
-from ClientId import ClientId
+from .Client import Client
+from .ClientId import ClientId
 
 @runtime_checkable
 class ClientRepository(Protocol):

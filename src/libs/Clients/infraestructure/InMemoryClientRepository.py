@@ -1,7 +1,7 @@
 
-from Clients.domain.Client import Client
-from Clients.domain.ClientId import ClientId
-from Clients.domain.ClientRepository import ClientRepository
+from ..domain.Client import Client
+from ..domain.ClientId import ClientId
+from ..domain.ClientRepository import ClientRepository
 
 
 class InmemoryClientRepository(ClientRepository):

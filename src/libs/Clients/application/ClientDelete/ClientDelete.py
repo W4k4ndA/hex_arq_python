@@ -1,7 +1,7 @@
 
 
-from Clients.domain.ClientId import ClientId
-from Clients.domain.ClientRepository import ClientRepository
+from ...domain.ClientId import ClientId
+from ...domain.ClientRepository import ClientRepository
 
 
 class ClientDelete:

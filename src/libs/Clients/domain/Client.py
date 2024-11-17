@@ -1,11 +1,11 @@
-from ClientId import ClientId
-from ClientType import ClientType
-from ClientPhone import ClientPhone
-from ClientName import ClientName
-from ClientEmail import ClientEmail
-from ClientAddress import ClientAddress
-from ClientIsActive import ClientIsActive
-from ClientCreatedAt import ClientCreatedAt
+from .ClientId import ClientId
+from .ClientType import ClientType
+from .ClientPhone import ClientPhone
+from .ClientName import ClientName
+from .ClientEmail import ClientEmail
+from .ClientAddress import ClientAddress
+from .ClientIsActive import ClientIsActive
+from .ClientCreatedAt import ClientCreatedAt
 
 # Entidad cliente
 class Client:

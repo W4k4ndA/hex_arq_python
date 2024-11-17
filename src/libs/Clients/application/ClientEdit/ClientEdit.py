@@ -1,16 +1,16 @@
 from datetime import datetime
 
-from Clients.domain.Client import Client
+from ...domain.Client import Client
 
-from Clients.domain.ClientEmail import ClientEmail
-from Clients.domain.ClientName import ClientName
-from Clients.domain.ClientType import ClientType
-from Clients.domain.ClientAddress import ClientAddress
-from Clients.domain.ClientCreatedAt import ClientCreatedAt
-from Clients.domain.ClientId import ClientId
-from Clients.domain.ClientIsActive import ClientIsActive
-from Clients.domain.ClientPhone import ClientPhone
-from Clients.domain.ClientRepository import ClientRepository
+from ...domain.ClientEmail import ClientEmail
+from ...domain.ClientName import ClientName
+from ...domain.ClientType import ClientType
+from ...domain.ClientAddress import ClientAddress
+from ...domain.ClientCreatedAt import ClientCreatedAt
+from ...domain.ClientId import ClientId
+from ...domain.ClientIsActive import ClientIsActive
+from ...domain.ClientPhone import ClientPhone
+from ...domain.ClientRepository import ClientRepository
 
 class ClientEdit:
     def __init__(self, repository: ClientRepository):

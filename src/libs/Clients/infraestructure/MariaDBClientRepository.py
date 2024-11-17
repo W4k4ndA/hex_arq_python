@@ -1,11 +1,11 @@
 
-from Clients.domain import ClientName, ClientType
-from Clients.domain.Client import Client
-from Clients.domain.ClientAddress import ClientAddress
-from Clients.domain.ClientEmail import ClientEmail
-from Clients.domain.ClientId import ClientId
-from Clients.domain.ClientPhone import ClientPhone
-from Clients.domain.ClientRepository import ClientRepository
+from ..domain import ClientName, ClientType
+from ..domain.Client import Client
+from ..domain.ClientAddress import ClientAddress
+from ..domain.ClientEmail import ClientEmail
+from ..domain.ClientId import ClientId
+from ..domain.ClientPhone import ClientPhone
+from ..domain.ClientRepository import ClientRepository
 from sqlalchemy import create_engine, text
 
 
