@@ -1,7 +1,7 @@
 import datetime
 
 class ClientCreatedAt:
-    def __init__(self, value: datetime):
+    def __init__(self, value: str):
         """
         Inicializa la clase ClientCreatedAt con un valor de fecha y hora.
         
@@ -9,7 +9,7 @@ class ClientCreatedAt:
             value (datetime): La fecha y hora de creación del cliente. Debe ser una instancia de datetime.
         """
         self.value = value
-        self.__ensure_value_is_valid(value)
+        self.__ensure_value_is_valid(self.value)
         
     def __ensure_value_is_valid(self, value: datetime):
         """

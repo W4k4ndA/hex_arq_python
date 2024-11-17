@@ -22,5 +22,5 @@ class ClientAddress:
         """
         if not value:
             raise ValueError('La dirección del cliente no puede estar vacia')
-        if len(value > 200):
+        if len(value) > 200:
             raise ValueError('La dirección del cliente debe tener menos de 300 caracteres')

@@ -31,7 +31,8 @@ class ClientEmail:
         # - A set of alphanumeric characters and hyphens after the @.
         # - A dot (.) literal.
         # - The string "com" literal at the end.
-        regex = r"^[a-zA-Z0-9]+[_]*\.?[a-zA-Z0-9]+[_]*@[a-zA-Z0-9]+\.[com]$"
+        # regex = r"^[a-zA-Z0-9]+[_]*\.?[a-zA-Z0-9]+[_]*@[a-zA-Z0-9]+\.[com]$"
+        regex = r"[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[com]"
         if not re.match(regex, value):
             raise ValueError('El email del cliente no es válido')
 

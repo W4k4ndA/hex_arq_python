@@ -11,7 +11,7 @@ class ClientId:
             ValueError: If the value is empty or has less than 5 characters.
         """
         self.value = value
-        self.__ensure_value_is_valid(value)
+        self.__ensure_value_is_valid(self.value)
         
     def __ensure_value_is_valid(self, value: str):
         """
@@ -27,4 +27,3 @@ class ClientId:
             raise ValueError('El id del cliente no puede estar vacio')
         if len(value) < 5:
             raise ValueError('El id del cliente debe tener al menos 5 caracteres')
-

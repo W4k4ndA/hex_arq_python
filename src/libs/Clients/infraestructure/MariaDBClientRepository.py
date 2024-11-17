@@ -6,7 +6,7 @@ from ..domain.ClientEmail import ClientEmail
 from ..domain.ClientId import ClientId
 from ..domain.ClientPhone import ClientPhone
 from ..domain.ClientRepository import ClientRepository
-from sqlalchemy import create_engine, text
+from sqlalchemy import create_engine, text, Row
 
 
 class MariaDBClientRepository(ClientRepository):
@@ -105,5 +105,14 @@ class MariaDBClientRepository(ClientRepository):
         
         
         
-    def __map_to_domain(self, row) -> Client:
+    def __map_to_domain(self, row: Row) -> Client:
+        """
+        Maps a row from the MariaDB database to a Client object.
+
+        Args:
+            row: A tuple containing the values of a row in the clients table.
+
+        Returns:
+            Client: A Client object with the values from the row.
+        """
         return Client(ClientId(row[0]), ClientType(row[1]), ClientName(row[2]), ClientEmail(row[3]), ClientAddress(row[4]), ClientPhone(row[5]))        

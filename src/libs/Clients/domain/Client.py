@@ -1,3 +1,5 @@
+from datetime import datetime
+import inspect
 from .ClientId import ClientId
 from .ClientType import ClientType
 from .ClientPhone import ClientPhone
@@ -34,4 +36,34 @@ class Client:
     
     #Servicio de dominio: Se denomina asi porque no depende de las otras capas    
     def __str__(self):
-        return "%s (%s)" % (self.name, self.email)
+        """
+        Returns a string representation of the client.
+
+        The string representation is in the format:
+            "<name> (<email>)"
+        Where <name> is the client's name and <email> is the client's email address.
+
+        Returns:
+            str: A string representation of the client.
+        """
+        return "%s (%s)" % (self.name.value, self.email.value)
+    
+    
+    def to_dict(self):
+        """
+        Convierte la entidad en un diccionario para su serializacion (json)
+        Se utiliza inspect.getmembers para obtener los atributos de la entidad
+        y se itera sobre ellos para obtener un diccionario con los valores
+        de los atributos. Se utiliza el nombre del atributo como clave y
+        el valor del atributo como valor. Si el valor es una instancia de
+        datetime, se utiliza el metodo isoformat() para convertirlo en una
+        cadena en formato ISO 8601.
+        De no hacerse todo esto, al intentar serializar la entidad se 
+        obtendria un error de serializacion de la libreria json debido a que
+        la Clase esta tiene atributos que asu vez son otras clases con atributos
+        """
+        attributes = inspect.getmembers(self, lambda a: not inspect.ismethod(a))
+        # return {key: value.value for key, value in attributes if not key.startswith('__')}
+        return {key: value.value.isoformat() if isinstance(value.value, datetime) else value.value for key, value in attributes if not key.startswith('__')}
+    
+    
