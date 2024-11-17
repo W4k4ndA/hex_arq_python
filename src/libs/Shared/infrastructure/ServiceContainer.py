@@ -10,6 +10,7 @@ from ...Clients.infraestructure.InMemoryClientRepository import InmemoryClientRe
 
 clientRepository = InmemoryClientRepository()
 
+    
 ServiceContainer = {
     "client":{
         "get_one_by_id": ClientGetOneById(clientRepository),
