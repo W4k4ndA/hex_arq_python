@@ -13,19 +13,26 @@ from ...Clients.application.ClientGetOneById.ClientGetOneById import ClientGetOn
 from ...Clients.application.ClientGetAll.ClientGetAll import ClientGetAll
 from ...Clients.infraestructure.InMemoryClientRepository import InmemoryClientRepository
 
+from types import SimpleNamespace
 
 clientRepository = InmemoryClientRepository()
 
+""" La clase SimpleNamespace se utiliza para crear un objeto dinamicamente
+sin necesidad de tener que crear una clase y luego instanciarla. De este modo
+podemos crear el contenedor de servicios y poder acceder a ellos de forma
+con notacion de objetos lo que favorece el tipado
+"""
+
+ServiceContainer = SimpleNamespace(
+    client = SimpleNamespace(
+        get_one_by_id = ClientGetOneById(clientRepository),
+        get_all = ClientGetAll(clientRepository),
+        create = ClientCreate(clientRepository),
+        edit = ClientEdit(clientRepository),
+        delete = ClientDelete(clientRepository)
+    )
+)
     
-ServiceContainer = {
-    "client":{
-        "get_one_by_id": ClientGetOneById(clientRepository),
-        "get_all": ClientGetAll(clientRepository),
-        "create": ClientCreate(clientRepository),
-        "edit": ClientEdit(clientRepository),
-        "delete": ClientDelete(clientRepository)
-    }
-}
 
 
 

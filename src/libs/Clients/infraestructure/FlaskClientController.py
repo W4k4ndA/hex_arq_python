@@ -28,20 +28,20 @@ class FlaskClientController:
             Response: A JSON response containing a list of client objects.
 
         """
-        clients = ServiceContainer["client"]["get_all"].run()
+        clients = ServiceContainer.client.get_all.run()
         
-        # Se utiliza json.dumps para convertir la lista de objetos Client a una cadena json
-        # ya que la funcion jsonify de flask utiliza json.dumps internamente para 
+        # La funcion jsonify de flask utiliza json.dumps internamente para 
         # serializar el objeto que se le pasa como parametro. Sin embargo, la funcion
         # json.dumps no serializa correctamente objetos que contienen atributos 
-        # que son objetos de tipo datetime, por lo que se utiliza el metodo to_dict
+        # que son objetos de tipo datetime o atributos que asu vez son objetos con
+        # atributos, por lo que se utiliza el metodo to_dict (que se crea manualmente)
         # de la clase Client que devuelve un diccionario con los atributos de la
-        # clase y los valores de los atributos son strings en formato ISO 8601
-        # para las fechas y horas. Ademas, el metodo to_dict se usa para poder
-        # obtener automanticamente los valores de los atributos de la clase y 
-        # convertirlos automanticamente en un diccionario. Diccionario que luego 
-        #es el que serializa 
-        response = json.dumps([client.to_dict() for client in clients])
+        # clase (valores de los atributos son strings en formato ISO 8601
+        # para las fechas y horas). Ademas, el metodo to_dict permite poder
+        # obtener automanticamente los valores de los atributos de la clase sin tener
+        # que tiparlos manualmene y convertirlos automaticamente en un diccionario.
+        # Diccionario que luego es el que serializa 
+        response = [client.to_dict() for client in clients]
         return jsonify(response), 200
 
     def get_one_by_id(self, request: Request) -> Response:
@@ -60,8 +60,8 @@ class FlaskClientController:
         if not id:
             return jsonify({"message": "id is required"}), 400
         try:
-            client = ServiceContainer["client"]["get_one_by_id"].run(id)
-            response = json.dumps(client.to_dict())
+            client = ServiceContainer.client.get_one_by_id.run(id)
+            response = client.to_dict()
             return jsonify(response)        
         except Exception as e:
             if isinstance(e, ClientNotFoundError):
@@ -105,7 +105,7 @@ class FlaskClientController:
         created_at = datetime.strptime(body["created_at"], "%Y%m%d %H:%M:%S") 
         is_active = cast_boolean_field.get(body["is_active"])
                 
-        ServiceContainer["client"]["create"].run(id, type, name, email, address, phone, created_at, is_active)
+        ServiceContainer.client.create.run(id, type, name, email, address, phone, created_at, is_active)
         return jsonify({}), 201
 
     def edit(self, request: Request) -> Response:
@@ -142,7 +142,7 @@ class FlaskClientController:
         created_at = datetime.strptime(body["created_at"], "%Y%m%d %H:%M:%S") 
         is_active = cast_boolean_field.get(body["is_active"])
         
-        ServiceContainer["client"]["edit"].run(id, type, name, email, address, phone, created_at, is_active)
+        ServiceContainer.client.edit.run(id, type, name, email, address, phone, created_at, is_active)
         return jsonify({}), 204
 
     def delete(self, request: Request) -> Response:
@@ -156,7 +156,7 @@ class FlaskClientController:
             Response: A JSON response with status code 204 indicating successful deletion.
         """
         id = request.view_args.get("id")
-        ServiceContainer["client"]["delete"].run(id)
+        ServiceContainer.client.delete.run(id)
         return jsonify({}), 204
     
     
