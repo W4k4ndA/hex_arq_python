@@ -100,7 +100,7 @@ class FlaskClientController:
         ServiceContainer.client.create.run(id, type, name, email, address, phone, created_at, is_active)
         return jsonify({}), 201
 
-    def edit(self, id) -> Response:
+    def edit(self, id: str) -> Response:
         """
         Updates an existing client with the provided request data.
 
@@ -137,7 +137,7 @@ class FlaskClientController:
         ServiceContainer.client.edit.run(id, type, name, email, address, phone, created_at, is_active)
         return jsonify({}), 204
 
-    def delete(self) -> Response:
+    def delete(self, id: str) -> Response:
         """
         Deletes a client from the repository using the provided client ID.
 
