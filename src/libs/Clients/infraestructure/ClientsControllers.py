@@ -1,6 +1,9 @@
 from flask import request
 from  libs.Clients.infraestructure.FlaskClientController import FlaskClientController
 
+controller = FlaskClientController()
+
+
 def get_all():
     """
     Retrieves all clients using the FlaskClientController.
@@ -8,7 +11,6 @@ def get_all():
     Returns:
         Response: A JSON response containing a list of client objects.
     """
-    controller = FlaskClientController()
     return controller.get_all(request)
 
 def create():
@@ -30,7 +32,6 @@ def create():
     Returns:
         Response: A JSON response with status code 201 indicating successful creation.
     """
-    controller = FlaskClientController()
     return controller.create(request)
 
 def get_one_by_id(id: str):
@@ -44,7 +45,6 @@ def get_one_by_id(id: str):
         Response: A JSON response containing a client object if the client
             exists, otherwise a 404 response.
     """
-    controller = FlaskClientController()
     return controller.get_one_by_id(request)
 
 def edit(id: str):
@@ -57,7 +57,6 @@ def edit(id: str):
     Returns:
         Response: A JSON response with status code 204 indicating successful update.
     """
-    controller = FlaskClientController()
     return controller.edit(request)
 
 def delete(id: str):
@@ -70,7 +69,6 @@ def delete(id: str):
     Returns:
         Response: A JSON response with status code 204 indicating successful deletion.
     """
-    controller = FlaskClientController()
     return controller.delete(request)
 
 

@@ -1,5 +1,5 @@
 from flask import Flask
-from ClientsControllers import get_all, get_one_by_id, create, edit, delete
+from libs.Clients.infraestructure.ClientsControllers import get_all, get_one_by_id, create, edit, delete
 # from libs.Clients.infraestructure.FlaskClientController import FlaskClientController
 
 app = Flask(__name__)
