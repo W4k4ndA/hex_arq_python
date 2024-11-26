@@ -1,8 +1,9 @@
 from flask import request
 from  libs.Clients.infraestructure.FlaskClientController import FlaskClientController
 
-controller = FlaskClientController()
 
+# Initialize a FlaskClientController instance to handle http client-related operations.
+controller = FlaskClientController()
 
 def get_all():
     """

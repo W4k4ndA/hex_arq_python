@@ -1,9 +1,8 @@
 from datetime import datetime
 from flask import Request, Response, jsonify
 from ..domain.ClientNotFoundError import ClientNotFoundError
-from ..domain.Client import Client
 from ...Shared.infrastructure.ServiceContainer import ServiceContainer
-import json
+
 class FlaskClientController:
 
     def __init__(self):
