@@ -25,7 +25,7 @@ pero orientado a python en lugar ts y usando <b>Flask</b> en lugar de Express. A
 seguir el ejemplo con python 3.x Solo se debe cambiar lo siguiente:
 <ol>
   <li>
-    <code>from typing import Protocol, runtime_checkable</code> por <code>from abc import ABC</code>
+    <code>from typing import Protocol, runtime_checkable</code> por <code>from abc import ABC, abstractmethod</code>
   </li>
   <li>
     remover la linea <code>@runtime_checkable</code>
