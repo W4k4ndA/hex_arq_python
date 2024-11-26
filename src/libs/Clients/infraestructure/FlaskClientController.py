@@ -1,22 +1,11 @@
 from datetime import datetime
-from flask import Request, Response, jsonify
+from flask import Request, Response, jsonify, request
 from ..domain.ClientNotFoundError import ClientNotFoundError
 from ...Shared.infrastructure.ServiceContainer import ServiceContainer
 
 class FlaskClientController:
 
-    def __init__(self):
-        """
-        Initializes a new instance of the FlaskClientController class.
-
-        This class provides methods that act as Flask endpoints to manage the
-        clients of the application. The methods of this class are intended to be
-        used as callbacks for Flask routes.
-
-        """
-        pass
-
-    def get_all(self, request: Request) -> Response:
+    def get_all(self) -> Response:
         """
         Retrieves all clients from the repository.
 
@@ -43,7 +32,10 @@ class FlaskClientController:
         response = [client.to_dict() for client in clients]
         return jsonify(response), 200
 
-    def get_one_by_id(self, request: Request) -> Response:
+    def get_one_by_id(self, id: str) -> Response:   # se debe tipar el id porque flask lo envia 
+                                                    #automaticamente a la funcion. Si no se coloca 
+                                                    # un da un error porque la funcion estaria 
+                                                    # recibiendo un parametro inesperado
         """
         Retrieves a client from the repository using the provided client ID.
 
@@ -55,6 +47,7 @@ class FlaskClientController:
                 exists, otherwise a 404 response.
 
         """
+        
         id = request.view_args.get("id")
         if not id:
             return jsonify({"message": "id is required"}), 400
@@ -68,7 +61,7 @@ class FlaskClientController:
             else:
                 raise e
 
-    def create(self, request: Request) -> Response:
+    def create(self) -> Response:
         """
         Creates a new client using the provided request data.
 
@@ -107,7 +100,7 @@ class FlaskClientController:
         ServiceContainer.client.create.run(id, type, name, email, address, phone, created_at, is_active)
         return jsonify({}), 201
 
-    def edit(self, request: Request) -> Response:
+    def edit(self, id) -> Response:
         """
         Updates an existing client with the provided request data.
 
@@ -144,7 +137,7 @@ class FlaskClientController:
         ServiceContainer.client.edit.run(id, type, name, email, address, phone, created_at, is_active)
         return jsonify({}), 204
 
-    def delete(self, request: Request) -> Response:
+    def delete(self) -> Response:
         """
         Deletes a client from the repository using the provided client ID.
 
