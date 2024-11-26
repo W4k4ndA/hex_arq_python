@@ -21,12 +21,30 @@ Este repo bien podria ser un fork del suyo en <a href="https://github.com/mvrcoa
 pero orientado a python en lugar ts y usando <b>Flask</b> en lugar de Express. Asi que vaya para el todo el reconocimiento y los creditos</p>
 
 <h2>Manos a la obra</h2>
-<p>Para este ejemplo se crea un modulo de arquitectura hexagonal de Clientes empleando los conceptos que explica marco en su guia de arquitectrua hexagonal. Aunque el
+<p>Para este ejemplo se uso python 3.13 en un entorno virtual con virtualenv. Sin embargo es posible
+seguir el ejemplo con python 3.x Solo se debe cambiar lo siguiente:
+<ol>
+  <li>
+    <code>from typing import Protocol, runtime_checkable</code> por <code>from abc import ABC</code>
+  </li>
+  <li>
+    remover la linea <code>@runtime_checkable</code>
+  </li>
+  <li>
+    reemplazar <code>class ClientRepository(Protocol):</code> por <code>class ClientRepository(ABC):</code>
+  </li>
+  <li>
+    agregar <code>@abstractmethod</code> como decorador a cada uno de los metodos
+  </li>
+</ol>
+
+</p>
+<p>Se crea un modulo de arquitectura hexagonal de Clientes empleando los conceptos que explica marco en su guia de arquitectrua hexagonal. Aunque el
 codigo esta comentado para dar el mayor detalle en cuanto al porque se hizo lo que se hizo, si requieres un nivel de explicacion mayor no dejes de ver 
 la serie de videos del canal de Marco (@MVRCO AG) en youtube</p>
 <p>En primera instancia las interfaces en python no existen como tal, pero si existe el concepto de clase abstracta. Hay un par de maneras de crear una clase
-abstracta en python pero se empleo el metodo que implica la importacion del modulo <b>abc</b> y el uso de la clase <b>ABC</b> (Abstract Base Clase) y el 
-decorador <b>@abstractmethod</b></p>
+abstracta en python pero se empleo el metodo que implica la importacion de la clase <b>Protocol</b> y del modulo <b>typing</b> y el 
+decorador <b>@runtime_checkable</b></p>
 
 <p>
   Dado que python no es compilado no veras ningun mensaje de error indicandote que si implementas las clase abstracta (interfaz en adelante) debes tambien
