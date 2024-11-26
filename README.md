@@ -13,7 +13,7 @@ que este tipo de arquitectura nos ofrece y el aprendijae que conlleva el usarla 
 <p>Soy programador python y desde hace tiempo he estado estudiando arquitectura de software porque llega un punto en que te das cuenta que aunque tu software
 funciona, podria hacerlo mejor o al menos ser mas facil de entender y modificar (sobre todo con esos clientes exigentes o que quieren un software todo en uno)</p>
 
-<p>Fue asi que me tope con el canal en youtube de <a href=https://www.youtube.com/@mvrcoag>MVCO AG</a> un desarrolador full stack mexicano cuya explicacion
+<p>Fue asi que me tope con el canal en youtube de <a href=https://www.youtube.com/@mvrcoag>MVRCO AG</a> un desarrolador full stack mexicano cuya explicacion
 de estos de la arquitectura hexagonal es tan clara que fue la primera vez que logre entender los conceptos bien, tanto asi que me inspiro a trasladar su codigo a python.
 Aunque el lo explica todo en <b>TypeScript</b> realmente solo se necesita saber un poco de programacion orientada a objetos para poder entender el que, el como y 
 el por que de la arquitectura hexagonal.
